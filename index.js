@@ -7,7 +7,51 @@ function fetchCity(cityID,callback){
     .then(data => callback(data));
 }
 
-cityId = 5128581
+const TEMP = {
+    KELVIN : 0,
+    FAHRENHEIT : 1,
+    CELSIUS : 2,
+}
+
+function writeWeatherInfo(data) {
+    document.getElementById("degree").innerHTML = convert(data.main.temp,TEMP.KELVIN,TEMP.FAHRENHEIT)
+    document.getElementById("weatherDescription").innerHTML = data.writeWeatherInfo[0].main
+}
+
+function convert(degree,inType,outType,decimal = 2) {
+    //Convert temp to Kelvin
+    switch (inType){
+        case TEMP.KELVIN:
+            
+        break
+        case TEMP.FAHRENHEIT:
+            degree = (degree-32) * 5/9 + 273.15
+        break
+        case TEMP.CELSIUS:
+            degree = (degree+273.15)
+        break
+        default:
+            throw "Tempature type is not valid"
+    }
+
+    switch (outType){
+        case TEMP.KELVIN:
+            
+        case TEMP.FAHRENHEIT:
+            degree = (degree - 273.15) * 9/5 + 32
+            break
+        case TEMP.CELSIUS:
+            degree = (degree-273.15)
+            break
+        default:
+            throw "Tempature type is not valid"
+    }
+
+    return Number((degree).toFixed(decimal));
+
+}
+
+let cityId = 5128581
 fetchCity(cityId,data => {
-    console.log(data)
+    writeWeatherInfo(data)
 })
