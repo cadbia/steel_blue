@@ -23,13 +23,13 @@ function convert(degree,inType,outType,decimal = 2) {
     switch (inType){
         case TEMP.KELVIN:
             
-        break
+            break
         case TEMP.FAHRENHEIT:
             degree = (degree-32) * 5/9 + 273.15
-        break
+            break
         case TEMP.CELSIUS:
             degree = (degree+273.15)
-        break
+            break
         default:
             throw "Tempature type is not valid"
     }
@@ -37,6 +37,7 @@ function convert(degree,inType,outType,decimal = 2) {
     switch (outType){
         case TEMP.KELVIN:
             
+            break
         case TEMP.FAHRENHEIT:
             degree = (degree - 273.15) * 9/5 + 32
             break
