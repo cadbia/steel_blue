@@ -3,7 +3,7 @@ GitHub for Columbia HS Coding Camp
 Caden Bialow
 Jeremy Dodoo
 Jacob Haussman
-bhadra
+Bhadra Rupesh
 Sharan
 andrea
 main
