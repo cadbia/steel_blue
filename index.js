@@ -1,5 +1,26 @@
 //Query by City ID instead of City name to avoid funky stuff with URL encoding.
 //City ID can be found in city.list.json
+window.addEventListener("load", ()=>{
+    let long;
+    let lat;
+
+if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(position =>{
+        long = position.coords.longitude;
+        lat = position.coords.longitude;
+
+        const api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=939aef0ebf0cecd4d85905f7f983915d`;
+        fetch(api)
+        .then(response =>{
+            return response.json();
+        })
+        .then(data =>{
+            console.log(data);
+            //set dom elements
+        })
+    });
+    }
+});
 
 function fetchCity(cityId,callback){
     fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=939aef0ebf0cecd4d85905f7f983915d`)
