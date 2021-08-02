@@ -36,3 +36,33 @@ body{
 .temperature h2{
     font-size: 40px;
 }
+.title {
+    font-size: 70px;
+    text-align: center;
+}
+
+.inputForm {
+    font-size: 20px;
+    padding: 10px;
+}
+
+/* .labelAndInput {
+    background-color: rgb(48,62,143);
+    border-style: none;
+    border-radius: 4px;
+    padding: 5px;
+    color: rgb(127, 193, 202);
+    font-size: inherit;
+} 
+
+^ you can change this css
+*/
+
+#submitButton {
+    background-color: rgb(48,62,143);
+    border-style: none;
+    border-radius: 4px;
+    padding: 5px;
+    color: rgb(127, 193, 202);
+    font-size: inherit;
+}
