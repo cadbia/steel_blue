@@ -15,7 +15,7 @@ const TEMP = {
 
 function writeWeatherInfo(data) {
     document.getElementById("degree").innerHTML = convert(data.main.temp,TEMP.KELVIN,TEMP.FAHRENHEIT)
-    document.getElementById("weatherDescription").innerHTML = data.writeWeatherInfo[0].main
+    document.getElementById("weatherDescription").innerHTML = data.weather[0].main
 }
 
 function convert(degree,inType,outType,decimal = 2) {
