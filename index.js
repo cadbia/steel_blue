@@ -1,79 +1,19 @@
 //Query by City ID instead of City name to avoid funky stuff with URL encoding.
 //City ID can be found in city.list.json
+
+var weatherAPI = new WeatherAPI("939aef0ebf0cecd4d85905f7f983915d")
+
 window.addEventListener("load", ()=>{
-    let long;
-    let lat;
-
-if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(position =>{
-        long = position.coords.longitude;
-        lat = position.coords.longitude;
-
-        const api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=939aef0ebf0cecd4d85905f7f983915d`;
-        fetch(api)
-        .then(response =>{
-            return response.json();
-        })
-        .then(data =>{
-            console.log(data);
-            //set dom elements
-        })
-    });
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(position =>{
+            weatherAPI.fetchDataByCoordnate(Coordnate.fromCoordnates(position.coords), data => {
+                writeWeatherInfo(data)
+            })
+        });
     }
 });
 
-function fetchCity(cityId,callback){
-    fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=939aef0ebf0cecd4d85905f7f983915d`)
-    .then(response => response.json())
-    .then(data => callback(data));
-}
-
-const TEMP = {
-    KELVIN : 0,
-    FAHRENHEIT : 1,
-    CELSIUS : 2,
-}
-
 function writeWeatherInfo(data) {
-    document.getElementById("degree").innerHTML = convert(data.main.temp,TEMP.KELVIN,TEMP.FAHRENHEIT)
+    document.getElementById("degree").innerHTML = convertTempetureUnit(data.main.temp,TEMP.KELVIN,TEMP.FAHRENHEIT)
     document.getElementById("weatherDescription").innerHTML = data.weather[0].main
 }
-
-function convert(degree,inType,outType,decimal = 2) {
-    //Convert temp to Kelvin
-    switch (inType){
-        case TEMP.KELVIN:
-            
-            break
-        case TEMP.FAHRENHEIT:
-            degree = (degree-32) * 5/9 + 273.15
-            break
-        case TEMP.CELSIUS:
-            degree = (degree+273.15)
-            break
-        default:
-            throw "Tempeture type is not valid"
-    }
-
-    switch (outType){
-        case TEMP.KELVIN:
-            
-            break
-        case TEMP.FAHRENHEIT:
-            degree = (degree - 273.15) * 9/5 + 32
-            break
-        case TEMP.CELSIUS:
-            degree = (degree-273.15)
-            break
-        default:
-            throw "Tempeture type is not valid"
-    }
-
-    return Number((degree).toFixed(decimal));
-
-}
-
-let cityId = 5128581
-fetchCity(cityId,data => {
-    writeWeatherInfo(data)
-})
