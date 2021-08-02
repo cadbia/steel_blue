@@ -31,7 +31,7 @@ function convert(degree,inType,outType,decimal = 2) {
             degree = (degree+273.15)
             break
         default:
-            throw "Tempature type is not valid"
+            throw "Tempeture type is not valid"
     }
 
     switch (outType){
@@ -45,7 +45,7 @@ function convert(degree,inType,outType,decimal = 2) {
             degree = (degree-273.15)
             break
         default:
-            throw "Tempature type is not valid"
+            throw "Tempeture type is not valid"
     }
 
     return Number((degree).toFixed(decimal));
