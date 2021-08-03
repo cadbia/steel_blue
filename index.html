@@ -5,38 +5,27 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel = "stylesheet" href= "./style.css"/>
-    <script src="src/util.js"></script>
     <script src="src/weather_api.js"></script>
     <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
 
   </head>
   <body>
       <h1 class = "title">Weather</h1>
-      <form class = "inputForm">
-        <div class = "labelAndInput">
-        <label id="inputLabel">City: </label>
-        <input type="text" name="city"><br><br>
-        </div>
-        <button class="pushable">
-          <span class="front">
-            Submit
-          </span>
-        </button>
-      </form>
       <div class = "location">
-        <h1 class = "location-city">city</h1>
+        <h1 id = "locationCity">city</h1>
           <div>
             <canvas class="icon" id="skycon" width="64" height="64"></canvas>
           </div>
       </div>
       <div class = "temperature">
         <h2 id = "degree"></h2>
-        <h1 id = "degree-type">F</h1>
+        <h1 id = "degree-type">°F</h1>
       </div>
-      <div id = "weatherDescription"></div>
-      <div class = "tempDescription"> ITS COLD</div>
- 
-  <script src="index.js"></script>
+      <div>
+        <h3 id = "weatherDescription"></h3>
+      </div>
+      <div id = "tempDescription"></div>
+      <script src="index.js"></script>
+      <script src="src/util.js"></script>
   </body>
-
 </html>
