@@ -20,4 +20,17 @@ class WeatherAPI{
         .then(response => response.json())
         .then(data => callback(data));
     }
+
+    fetchWeeklyForcastByCityName(city,callback){
+        fetch(`api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=7&appid=${this.api_key}`)
+        .then(response => response.json())
+        .then(data => callback(data));
+    }
+
+    fetchWeeklyForcastByCoordinate(coordinate,callback){
+        fetch(`api.openweathermap.org/data/2.5/forecast/daily?lat=${coordinate.latitude}&lon=${coordinate.longitude}&cnt=7&appid=${this.api_key}`)
+        .then(response => response.json())
+        .then(data => callback(data));
+    }
+
 }

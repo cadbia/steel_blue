@@ -37,7 +37,6 @@ WEATHER_TYPES = {
 
 
 function writeWeatherInfo(data) {
-    console.log(data)
     document.getElementById("degree").innerHTML = `${convertTempetureUnit(data.main.temp,TEMP.KELVIN,TEMP.FAHRENHEIT)}°`
     document.getElementById("weatherDescription").innerHTML = `Feels like ${convertTempetureUnit(data.main.feels_like,TEMP.KELVIN,TEMP.FAHRENHEIT)}°`
     document.getElementById("tempDescription").innerHTML = toTitleCase(data.weather[0].description)
