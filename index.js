@@ -1,7 +1,7 @@
 //Query by City ID instead of City name to avoid funky stuff with URL encoding.
 //City ID can be found in city.list.json
 
-var weatherAPI = new WeatherAPI("939aef0ebf0cecd4d85905f7f983915d")
+const weatherAPI = new WeatherAPI("939aef0ebf0cecd4d85905f7f983915d")
 
 window.addEventListener("load", ()=>{
     if(navigator.geolocation){
