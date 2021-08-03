@@ -18,24 +18,24 @@ window.addEventListener("load", ()=>{
 });
 
 WEATHER_TYPES = {
-    "Thunderstorm" : "icon",
-    "Drizzle" : "icon",
-    "Rain": "icon",
-    "Snow": "icon",
-    "Clear": "icon",
-    "Clouds" : "icon",
+    "Thunderstorm": "FOG",
+    "Drizzle": "RAIN",
+    "Rain": "SLEET",
+    "Snow": "SNOW",
+    "Clear": "CLEAR-DAY",
+    "Clouds": "PARTLY_CLOUDY_DAY",
 
     //These are the 7xx ones. They are for atmosphere weather, not sure if they can be grouped.
-    "Mist" : "icon",
-    "Smoke" : "icon",
-    "Haze" : "icon",
-    "Dust" : "icon",
-    "Fog" : "icon",
-    "Sand" : "icon",
-    "Dust" : "icon",
-    "Ash" : "icon",
-    "Squall" : "icon",
-    "Tornado" : "icon",
+    "Mist": "icon",
+    "Smoke": "icon",
+    "Haze": "icon",
+    "Dust": "icon",
+    "Fog": "CLOUDY",
+    "Sand": "icon",
+    "Dust": "icon",
+    "Ash": "icon",
+    "Squall": "icon",
+    "Tornado": "icon",
 
 }
 function numberExtract(str) { 
@@ -62,11 +62,15 @@ temperatureSection.addEventListener("click", ()=>{
         feelsLike.textContent =  "Feels like " + ((feelNum*(9/5)) +32).toFixed(2);
     }
 });
-
+var skycons = new Skycons({ "color": "white" });
 function writeWeatherInfo(data) {
     console.log(data)
     document.getElementById("degree").innerHTML = `${convertTempetureUnit(data.main.temp,TEMP.KELVIN,TEMP.FAHRENHEIT)}`
     document.getElementById("weatherDescription").innerHTML = `Feels like ${convertTempetureUnit(data.main.feels_like,TEMP.KELVIN,TEMP.FAHRENHEIT)}`
     document.getElementById("tempDescription").innerHTML = toTitleCase(data.weather[0].description)
     document.getElementById("locationCity").innerHTML = `${data.name}, ${data.sys.country}`
+    var skyconElement = document.getElementsByClassName("icon")[0]
+    var weatherIconName = WEATHER_TYPES[data.weather[0].main]
+    skycons.set(skycon, weatherIconName)
+    skycons.play()
 }
