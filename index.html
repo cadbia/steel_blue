@@ -7,7 +7,7 @@
     <link rel = "stylesheet" href= "./style.css"/>
     <script src="src/util.js"></script>
     <script src="src/weather_api.js"></script>
-    <script src="index.js"></script>
+    <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
 
   </head>
   <body>
@@ -23,10 +23,11 @@
           </span>
         </button>
       </form>
-      </form>
       <div class = "location">
         <h1 class = "location-city">city</h1>
-          <p>icon</p>
+          <div>
+            <canvas class="icon" id="skycon" width="64" height="64"></canvas>
+          </div>
       </div>
       <div class = "temperature">
         <h2 id = "degree"></h2>
@@ -34,5 +35,8 @@
       </div>
       <div id = "weatherDescription"></div>
       <div class = "tempDescription"> ITS COLD</div>
+ 
+  <script src="index.js"></script>
   </body>
+
 </html>

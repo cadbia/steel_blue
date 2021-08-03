@@ -30,7 +30,7 @@ function convertTempetureUnit(degree,inType,outType,decimals = 2) {
             degree = (degree+273.15)
             break
         default:
-            throw "Tempeture type is not valid"
+            throw "Temperature type is not valid"
     }
 
     switch (outType){
@@ -44,9 +44,15 @@ function convertTempetureUnit(degree,inType,outType,decimals = 2) {
             degree = (degree-273.15)
             break
         default:
-            throw "Tempeture type is not valid"
+            throw "Temperature type is not valid"
     }
 
     return Number((degree).toFixed(decimals));
 
 }
+
+//var icons = new Skycons({ "color": "white" });
+
+//icons.set("clear-day", Skycons.CLEAR_DAY);
+
+//icons.play();
