@@ -14,6 +14,11 @@ window.addEventListener("load", ()=>{
 });
 
 function writeWeatherInfo(data) {
-    document.getElementById("degree").innerHTML = convertTempetureUnit(data.main.temp,TEMP.KELVIN,TEMP.FAHRENHEIT)
-    document.getElementById("weatherDescription").innerHTML = data.weather[0].main
+    console.log(data)
+    document.getElementById("degree").innerHTML = `${convertTempetureUnit(data.main.temp,TEMP.KELVIN,TEMP.FAHRENHEIT)}°`
+    document.getElementById("weatherDescription").innerHTML = `Feels like ${convertTempetureUnit(data.main.feels_like,TEMP.KELVIN,TEMP.FAHRENHEIT)}°`
+    document.getElementById("tempDescription").innerHTML = data.weather[0].main
+    document.getElementById("locationCity").innerHTML = `${data.name}, ${data.sys.country}`
+
+
 }
