@@ -8,6 +8,9 @@ const degreeType = document.querySelector(".temperature h1");
 const h2degree = document.querySelector(".temperature h2");
 
 window.addEventListener("load", ()=>{
+    console.log("preload")
+    document.all["layer1"].style.visibility = "visible";
+    document.all["layer2"].style.visibility = "hidden";
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position =>{
             weatherAPI.fetchDataByCoordinate(Coordinate.fromCoordinates(position.coords), data => {
@@ -62,8 +65,11 @@ temperatureSection.addEventListener("click", ()=>{
         feelsLike.textContent =  "Feels like " + ((feelNum*(9/5)) +32).toFixed(2);
     }
 });
+
 var skycons = new Skycons({ "color": "white" });
 function writeWeatherInfo(data) {
+    node = document.getElementById("layer1").style.visibility = 'hidden';
+    node = document.getElementById("layer2").style.visibility = 'visible';
     console.log(data)
     document.getElementById("degree").innerHTML = `${convertTempetureUnit(data.main.temp,TEMP.KELVIN,TEMP.FAHRENHEIT)}`
     document.getElementById("weatherDescription").innerHTML = `Feels like ${convertTempetureUnit(data.main.feels_like,TEMP.KELVIN,TEMP.FAHRENHEIT)}`
