@@ -1,58 +1,19 @@
 //Query by City ID instead of City name to avoid funky stuff with URL encoding.
 //City ID can be found in city.list.json
 
-function fetchCity(cityId,callback){
-    fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityId}&appid=939aef0ebf0cecd4d85905f7f983915d`)
-    .then(response => response.json())
-    .then(data => callback(data));
-}
+var weatherAPI = new WeatherAPI("939aef0ebf0cecd4d85905f7f983915d")
 
-const TEMP = {
-    KELVIN : 0,
-    FAHRENHEIT : 1,
-    CELSIUS : 2,
-}
+window.addEventListener("load", ()=>{
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(position =>{
+            weatherAPI.fetchDataByCoordinate(Coordinate.fromCoordinates(position.coords), data => {
+                writeWeatherInfo(data)
+            })
+        });
+    }
+});
 
 function writeWeatherInfo(data) {
-    document.getElementById("degree").innerHTML = convert(data.main.temp,TEMP.KELVIN,TEMP.FAHRENHEIT)
+    document.getElementById("degree").innerHTML = convertTempetureUnit(data.main.temp,TEMP.KELVIN,TEMP.FAHRENHEIT)
     document.getElementById("weatherDescription").innerHTML = data.weather[0].main
 }
-
-function convert(degree,inType,outType,decimal = 2) {
-    //Convert temp to Kelvin
-    switch (inType){
-        case TEMP.KELVIN:
-            
-            break
-        case TEMP.FAHRENHEIT:
-            degree = (degree-32) * 5/9 + 273.15
-            break
-        case TEMP.CELSIUS:
-            degree = (degree+273.15)
-            break
-        default:
-            throw "Tempeture type is not valid"
-    }
-
-    switch (outType){
-        case TEMP.KELVIN:
-            
-            break
-        case TEMP.FAHRENHEIT:
-            degree = (degree - 273.15) * 9/5 + 32
-            break
-        case TEMP.CELSIUS:
-            degree = (degree-273.15)
-            break
-        default:
-            throw "Tempeture type is not valid"
-    }
-
-    return Number((degree).toFixed(decimal));
-
-}
-
-let cityId = 5128581
-fetchCity(cityId,data => {
-    writeWeatherInfo(data)
-})
