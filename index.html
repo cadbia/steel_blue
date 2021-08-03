@@ -7,14 +7,20 @@
     <link rel = "stylesheet" href= "./style.css"/>
     <script src="src/util.js"></script>
     <script src="src/weather_api.js"></script>
+<<<<<<< HEAD
     <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
+=======
+    <script src="index.js"></script>
+    <script src="city.list.json"></script>
+>>>>>>> f5253fc3c3b4bbc1f2f50371427666a934394126
 
   </head>
   <body>
       <h1 class = "title">Weather</h1>
-      <form class = "inputForm">
-        <div class = "labelAndInput">
+
+      <div id = "dropdown">
         <label id="inputLabel">City: </label>
+
         <input type="text" name="city"><br><br>
         </div>
         <button class="pushable">
@@ -22,7 +28,16 @@
             Submit
           </span>
         </button>
+
+        <select id="city-dropdown" name="city">
+        </select>
+      </div>
+        <br>
+      <form>
+        <input id="submitButton" type="submit" value="submit">
+
       </form>
+
       <div class = "location">
         <h1 class = "location-city">city</h1>
           <div>
@@ -37,6 +52,7 @@
       <div class = "tempDescription"> ITS COLD</div>
  
   <script src="index.js"></script>
+
   </body>
 
 </html>
