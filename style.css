@@ -75,8 +75,24 @@ body{
     color: white;
     transform: translateY(-6px);
   }
+  .pushable {
+    outline-offset: 4px;
+  }
+  .front {
+    will-change: transform;
+    transition: transform 250ms;
+  }
+  .pushable:hover .front {
+    transform: translateY(-6px);
+  }
   .pushable:active .front {
     transform: translateY(-2px);
+  }
+  .pushable:active .front {
+    transform: translateY(-2px);
+  }
+  .pushable:focus:not(:focus-visible) {
+    outline: none;
   }
 button {
     margin:0 auto;
