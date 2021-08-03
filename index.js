@@ -6,7 +6,7 @@ var weatherAPI = new WeatherAPI("939aef0ebf0cecd4d85905f7f983915d")
 window.addEventListener("load", ()=>{
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position =>{
-            weatherAPI.fetchDataByCoordnate(Coordnate.fromCoordnates(position.coords), data => {
+            weatherAPI.fetchDataByCoordinate(Coordinate.fromCoordinates(position.coords), data => {
                 writeWeatherInfo(data)
             })
         });

@@ -1,13 +1,13 @@
-class Coordnate{
+class Coordinate{
     constructor(lat,long){
         this.latitude = lat
         this.longitude = long
     }
 
-    static fromCoordnates(coords){
+    static fromCoordinates(coords){
         let lat = coords.latitude;
         let long = coords.longitude;
-        return new Coordnate(lat,long)
+        return new Coordinate(lat,long)
     }
 }
 

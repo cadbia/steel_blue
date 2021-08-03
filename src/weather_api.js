@@ -15,8 +15,8 @@ class WeatherAPI{
         .then(data => callback(data));
     }
 
-    fetchDataByCoordnate(coordnate,callback){
-        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${coordnate.latitude}&lon=${coordnate.longitude}&appid=${this.api_key}`)
+    fetchDataByCoordinate(coordinate,callback){
+        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${coordinate.latitude}&lon=${coordinate.longitude}&appid=${this.api_key}`)
         .then(response => response.json())
         .then(data => callback(data));
     }
