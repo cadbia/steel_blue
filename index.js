@@ -1,7 +1,7 @@
 //Query by City ID instead of City name to avoid funky stuff with URL encoding.
 //City ID can be found in city.list.json
 const feelsLike = document.querySelector("#weatherDescription");
-const weatherAPI = new WeatherAPI("939aef0ebf0cecd4d85905f7f983915d")
+const weatherAPI = new WeatherAPI()
 const city = document.querySelector(".location-city");
 const temperatureSection = document.querySelector(".temperature");
 const degreeType = document.querySelector(".temperature h1");

@@ -1,6 +1,6 @@
 class WeatherAPI{
     constructor(api_key){
-        this.api_key = api_key
+        
     }
 
     fetchDataByCityId(cityId,callback){
