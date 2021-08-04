@@ -12,7 +12,8 @@ window.addEventListener("load", () => {
     document.all["layer2"].style.visibility = "hidden";
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
-            weatherAPI.fetchDataByCoordinate(Coordinate.fromCoordinates(position.coords), data => {
+            window.localCoords = Coordinate.fromCoordinates(position.coords)
+            weatherAPI.fetchDataByCoordinate(window.localCoords, data => {
                 writeWeatherInfo(data);
                 window.localData = data;
             })
@@ -21,7 +22,9 @@ window.addEventListener("load", () => {
 });
 
 function getLocalData() {
-    writeWeatherInfo(window.localData);
+    weatherAPI.fetchDataByCoordinate(window.localCoords, data => {
+        writeWeatherInfo(data)
+    })
 }
 
 function searchBar(event,searchBar){
