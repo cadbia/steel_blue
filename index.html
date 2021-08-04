@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Weather</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel = "stylesheet" href= "./style.css"/>
 
-  </head>
-  <body>
-      <h1 class = "title">Weather</h1>
-      <div class = "location">
-        <h1 id = "locationCity">city</h1>
-        <p>icon</p>
-      </div>
-      <div class = "temperature">
-        <h2 id = "degree"></h2>
-        <h1 id = "degree-type">°F</h1>
-      </div>
-      <div>
-        <h3 id = "weatherDescription"></h3>
-      </div>
-      <div id = "tempDescription"></div>
+<head>
+  <title>Weather</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./style.css" />
+  <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
+</head>
 
-      <script src="src/util.js"></script>
+<body>
+  <div id="cityTextbox">
+    <input type="text" onkeydown="searchBar(event,this)">
+  </div>
+
+  <div class="center">
+    <div id="layer1" class="layer1_class">
+      <h1 id="loadText">Weather data loading, please wait...</h1>
+      <div class="loader"></div>
+    </div>
+    
+    <div id="layer2" class="layer2_class">
+      <h1 class="title">Weather</h1>
+      <table class="location">
+        <h1 id="locationCity">city</h1>
+      </table>
+      <canvas class="icon" id="skycon" width="64" height="64"></canvas>
+      
+      <div class="lower-info">
+        <div class="temperature">
+          <h2 id="degree"></h2>
+          <h1 id="degree-type">°F</h1>
+        </div>
+        
+        <h3 id="weatherDescription"></h3>
+        
+        <div id="tempDescription"></div>
+      </div>
+      
       <script src="src/weather_api.js"></script>
       <script src="index.js"></script>
+      <script src="src/util.js"></script>
+    </div>
+  </div>
   </body>
-</html>
+  
+  </html>
