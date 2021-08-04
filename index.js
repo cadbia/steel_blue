@@ -13,11 +13,16 @@ window.addEventListener("load", () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
             weatherAPI.fetchDataByCoordinate(Coordinate.fromCoordinates(position.coords), data => {
-                writeWeatherInfo(data)
+                writeWeatherInfo(data);
+                window.localData = data;
             })
         });
     }
 });
+
+function getLocalData() {
+    writeWeatherInfo(window.localData);
+}
 
 function searchBar(event,searchBar){
     if (event.keyCode == 13){
