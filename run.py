@@ -34,4 +34,4 @@ def api(endpoint):
     return resp
 
 
-waitress.serve(app, listen='*:4682')
+waitress.serve(app, listen='*:4682', url_scheme='https')
