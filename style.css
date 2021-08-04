@@ -112,4 +112,39 @@ body{
     position: absolute;
     top: 40px;
     left: 10px;
+    padding-top: 5px;
+}
+
+#local {
+    background-color: #54bee41a;
+    padding: 3px;
+    border-style: solid;
+    border-color: #a9e8ff7c;
+    border-radius: 3px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#search {
+    background-color: #92b4db81;
+    padding: 3px;
+    border-style: solid;
+    border-color: #a9e8ff7c;
+    border-radius: 3px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#local:hover {
+    background-color: #5497e481;
+}
+
+#search:hover {
+    background-color: #5497e481;
+}
+
+h4 {
+    margin: auto;
 }

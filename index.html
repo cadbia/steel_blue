@@ -11,10 +11,11 @@
 
 <body>
   <div id="cityTextbox">
-    <input type="text" onkeydown="searchBar(event,this)">
+    <h4>Search:&nbsp;</h4>
+    <input id="search" type="text" onkeydown="searchBar(event,this)"></input>
   </div>
   <div id="localButton">
-    <input type="button" value="Local Weather Data" onclick="getLocalData()"></button>
+    <input id="local" type="button" value="Local Weather Data" onclick="getLocalData()">
   </div>
 
   <div class="center">
