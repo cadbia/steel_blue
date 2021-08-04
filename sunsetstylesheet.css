@@ -1,0 +1,62 @@
+@keyframes sunset {
+    0% {
+      background-color: yellow;
+    }
+    50% {
+      transform: translate(40vw, -500px);
+    }
+    100% {
+      background-color: darkorange;
+      transform: translate(80vw, 0);
+    }
+  }
+  
+  .sun {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+  /*   background-color: yellow; */
+    position: absolute;
+    bottom: 15%;
+    
+    animation-name: sunset;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    
+  /*   animation-delay: 1s; */
+  /*   animation-fill-mode: none; */
+  /*   animation-play-state: running; */
+  }
+  
+  @keyframes bodyColor {
+    0% { background-color: #003366; }
+    50% { background-color: #ffffff; }
+  }
+  
+  body {
+    background-color: #003366;
+    
+    animation-name: bodyColor;
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+  }
+  
+  .grass {
+    position: absolute;
+    bottom: 0;
+    height: 40%;
+    width: 100%;
+    background-color: olivedrab;
+  }
+  
+  
+  
+  
+  
+  
+  
+  body { margin: 0; height: 100vh; width: 100vw; position: relative; }
