@@ -16,7 +16,8 @@ class WeatherAPI{
     }
 
     fetchDataByCoordinate(coordinate,callback){
-        fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${coordinate.latitude}&lon=${coordinate.longitude}&appid=${this.api_key}`)
+        const proxy = 'https://cors-anywhere.herokuapp.com/';
+        fetch(`${proxy}http://api.openweathermap.org/data/2.5/weather?lat=${coordinate.latitude}&lon=${coordinate.longitude}&appid=${this.api_key}`)
         .then(response => response.json())
         .then(data => callback(data));
     }
