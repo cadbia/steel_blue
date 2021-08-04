@@ -107,3 +107,9 @@ body{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+#localButton {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+}
