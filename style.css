@@ -148,3 +148,13 @@ body{
 h4 {
     margin: auto;
 }
+
+#clock {
+    margin: auto;
+    width: 270px;
+    font-size: 50px;
+    text-align: center;
+    position: absolute;
+    top: -120px;
+    
+}

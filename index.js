@@ -7,6 +7,8 @@ const temperatureSection = document.querySelector(".temperature");
 const degreeType = document.querySelector(".temperature h1");
 const h2degree = document.querySelector(".temperature h2");
 
+var tz = 0
+var localTz = 0
 window.addEventListener("load", () => {
     document.all["layer1"].style.visibility = "visible";
     document.all["layer2"].style.visibility = "hidden";
@@ -16,6 +18,8 @@ window.addEventListener("load", () => {
             weatherAPI.fetchDataByCoordinate(window.localCoords, data => {
                 writeWeatherInfo(data);
                 window.localData = data;
+                tz = data.timezone
+                localTz = data.timezone
             })
         });
     }
@@ -35,6 +39,7 @@ function searchBar(event,searchBar){
                 throw "City not found"
             }
             writeWeatherInfo(data)
+            tz = data.timezone
         })
     }
 }
@@ -94,6 +99,21 @@ function writeWeatherInfo(data) {
     document.getElementById("locationCity").innerHTML = `${data.name}, ${data.sys.country}`
     var skyconElement = document.getElementsByClassName("icon")[0]
     var weatherIconName = WEATHER_TYPES[data.weather[0].main]
+    clockSecond()
     skycons.set(skycon, weatherIconName)
     skycons.play()
+}
+
+var secondLength
+function clockSecond() {
+    var secondLength = setInterval(function () {
+    clockTimer();
+}, 1000);
+}
+
+function clockTimer() {
+    console.log();
+    var localTime = new Date().getTime();
+    var newTime = new Date(tz * 1000 + localTime - localTz * 1000);
+    document.getElementById("clock").innerHTML = `${newTime.toLocaleTimeString()}`;
 }
