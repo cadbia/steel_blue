@@ -13,11 +13,41 @@ body{
     font-family: sans-serif;
     color:white
 }
-
-#loadText {
+.locationCity,
+.degree {
+    height: 30vh;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.locationCity{
+    padding-top: 10vh;
     padding-bottom: 10vh;
 }
-
+.degree{
+    flex-direction: column;
+}
+.temperature{
+    display:flex;
+    align-items: center;
+    cursor: pointer;
+}
+.temperature span{
+    margin: 10px;
+    font-size: 30px;
+}
+.temperature h2{
+    font-size: 40px;
+}
+.title {
+    font-size: 70px;
+    text-align: center;
+}
+#loadText {
+    padding-bottom: 10vh;
+    text-align: center;
+}
 .layer1_class {
     position: absolute;
     z-index: 1;
@@ -31,76 +61,15 @@ body{
 }
 
 .icon {
+    padding-top: 10vh;
     padding-bottom: 10vh;
     margin: auto;
-    display: block;
-}
-
-.location,
-.degree {
-    height: 20vh;
-    width: 50%;
-    display: block;
-    justify-content: space-around;
-}
-
-.degree{
-    flex-direction: column;
-}
-.temperature{
-    display: inline;
-    align-items: center;
-    cursor: pointer;
-}
-.temperature span{
-    margin: 10vh;
-    font-size: 30px;
-}
-.temperature h2{
-    font-size: 40px;
-}
-.title {
-    font-size: 70px;
-    text-align: center;
-}
-
-.inputForm {
-    font-size: 20px;
-    padding: 10px;
-}
-
-.lower-info {
-    text-align: center;
-}
-
-.pushable {
-    background-color: rgb(48,62,143);
-    border-radius: 12px;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    outline-offset: 4px;
-  }
-  .front {
-    display: block;
-    padding: 12px 42px;
-    border-radius: 12px;
-    font-size: 1.25rem;
-    background-color: rgb(77, 113, 190);
-    color: white;
-    transform: translateY(-6px);
-  }
-  .pushable:active .front {
-    transform: translateY(-2px);
-  }
-button {
-    margin:0 auto;
-    display:block;
+    display: flex;
 }
 
 .loader {
   margin: auto;
-  display: block;
+  display: flex;
   border: 16px solid #ffffff;
   border-top: 16px solid #80bce4;
   border-radius: 50%;
