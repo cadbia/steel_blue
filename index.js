@@ -51,7 +51,6 @@ temperatureSection.addEventListener("click", ()=>{
         degreeType.textContent = "°C";
         h2degree.textContent =  ((h2degree.textContent-32) *(5/9)).toFixed(2);
         let feelNum = numberExtract(feelsLike.textContent);
-        
         feelsLike.textContent = "Feels like " + ((feelNum-32) *(5/9)).toFixed(2);
     }
     else
