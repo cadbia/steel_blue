@@ -78,8 +78,4 @@ function writeWeatherInfo(data) {
     var weatherIconName = WEATHER_TYPES[data.weather[0].main]
     skycons.set(skycon, weatherIconName)
     skycons.play()
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> f90ac92d1f6017e660639c5e223a5f59c2f9481e
