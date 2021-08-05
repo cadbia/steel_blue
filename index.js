@@ -6,6 +6,7 @@ const city = document.querySelector(".location-city");
 const temperatureSection = document.querySelector(".temperature");
 const degreeType = document.querySelector(".temperature h1");
 const h2degree = document.querySelector(".temperature h2");
+
 document.getElementById("citySelector").addEventListener("change", getWeatherForCity, false);
 function getWeatherForCity() {
     var cityCode = document.getElementById("citySelector").value;
@@ -14,22 +15,27 @@ function getWeatherForCity() {
         window.localData = data;
     })
 }
+const clock = document.getElementById("clock")
+
+var tz = 0
+var localTz = 0
 window.addEventListener("load", () => {
     document.all["layer1"].style.visibility = "visible";
     document.all["layer2"].style.visibility = "hidden";
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
             window.localCoords = Coordinate.fromCoordinates(position.coords)
-            weatherAPI.fetchDataByCoordinate(window.localCoords, data => {
-                writeWeatherInfo(data);
-                window.localData = data;
-            })
+            getLocalData()
         });
     }
 });
 
 function getLocalData() {
     weatherAPI.fetchDataByCoordinate(window.localCoords, data => {
+        window.localData = data;
+        tz = data.timezone
+        localTz = data.timezone
+        setClock()
         writeWeatherInfo(data)
     })
 }
@@ -41,6 +47,8 @@ function searchBar(event,searchBar){
             if (data.cod == 404){
                 throw "City not found"
             }
+            tz = data.timezone
+            setClock()
             writeWeatherInfo(data)
         })
     }
@@ -103,4 +111,14 @@ function writeWeatherInfo(data) {
     var weatherIconName = WEATHER_TYPES[data.weather[0].main]
     skycons.set(skycon, weatherIconName)
     skycons.play()
+}
+
+//Update the clock evert second
+setInterval(() => {
+    setClock()
+}, 1000);
+function setClock() {
+    var localTime = new Date().getTime();
+    var newTime = new Date(tz * 1000 + localTime - localTz * 1000);
+    clock.innerHTML = `${newTime.toLocaleTimeString()}`;
 }
