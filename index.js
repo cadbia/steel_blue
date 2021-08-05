@@ -13,20 +13,24 @@ var localTz = 0
 window.addEventListener("load", () => {
     document.all["layer1"].style.visibility = "visible";
     document.all["layer2"].style.visibility = "hidden";
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-            window.localCoords = Coordinate.fromCoordinates(position.coords)
-            getLocalData()
-        });
-    }
+
+    navigator.geolocation.getCurrentPosition(position => {
+        window.localCoords = Coordinate.fromCoordinates(position.coords)
+        getLocalData()
+    }, (err) => {
+        weatherAPI.fetchDataByCityName("New York City", data => {
+            localTz = data.timezone
+            writeWeatherInfo(data)
+        })
+
+
+
+    });
 });
 
 function getLocalData() {
     weatherAPI.fetchDataByCoordinate(window.localCoords, data => {
-        window.localData = data;
-        tz = data.timezone
         localTz = data.timezone
-        setClock()
         writeWeatherInfo(data)
     })
 }
@@ -47,8 +51,6 @@ function searchBar(event,searchBar){
 
                 throw "City not found"
             }
-            tz = data.timezone
-            setClock()
             writeWeatherInfo(data)
         })
     }
@@ -75,8 +77,8 @@ WEATHER_TYPES = {
     "Tornado": "PARTLY_CLOUDY_DAY",
 
 }
-function numberExtract(str) {
 
+function numberExtract(str) {
     var matches = str.match(/[\d\.]+/);
     if (matches) {
         return matches[0];
@@ -104,6 +106,9 @@ temperatureSection.addEventListener("click", () => {
 
 var skycons = new Skycons({ "color": "white" });
 function writeWeatherInfo(data) {
+    tz = data.timezone
+    setClock()
+
     node = document.getElementById("layer1").style.visibility = 'hidden';
     node = document.getElementById("layer2").style.visibility = 'visible';
     var degreeTypeToConvert
@@ -119,9 +124,6 @@ function writeWeatherInfo(data) {
     document.getElementById("degree").innerHTML = `${convertTempetureUnit(data.main.temp, TEMP.KELVIN, degreeTypeToConvert)}`
     document.getElementById("weatherDescription").innerHTML = `Feels like ${convertTempetureUnit(data.main.feels_like, TEMP.KELVIN, TEMP.FAHRENHEIT)}`
     document.getElementById("tempDescription").innerHTML = toTitleCase(data.weather[0].description)
-
-
-    console.log(data.sys.state)
 
     document.getElementById("locationCity").innerHTML = `${data.name},${data.sys.state !== null? " "+data.sys.state+",": ""} ${data.sys.country}`
     var skyconElement = document.getElementsByClassName("icon")[0]
