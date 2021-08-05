@@ -138,11 +138,10 @@ function writeWeatherInfo(data) {
     document.getElementById("humidity").innerHTML = `Humidity: ${data.main.humidity}%`
     document.getElementById("windSpeed").innerHTML = `Wind speed: ${data.wind.speed} meters/sec`
     document.getElementById("locationCity").innerHTML = `${data.name},${data.sys.state !== null? " "+data.sys.state+",": ""} ${data.sys.country}`
-
     sunriseTime = new Date(data.sys.sunrise*1000 + tz * 1000).toLocaleTimeString('en-US',{timeZone:'UTC'});
     sunsetTime = new Date(data.sys.sunset*1000 + tz * 1000).toLocaleTimeString('en-US',{timeZone:'UTC'});
-    console.log(sunriseTime)
-    console.log(sunsetTime)
+    document.getElementById("sunrise").innerHTML = "Sunrise: " + sunriseTime;
+    document.getElementById("sunset").innerHTML =  "Sunset: " + sunsetTime;
 
     var skyconElement = document.getElementsByClassName("icon")[0]
     var weatherIconName = WEATHER_TYPES[data.weather[0].main]
