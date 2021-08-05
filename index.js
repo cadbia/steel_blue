@@ -21,6 +21,16 @@ window.addEventListener("load", () => {
         weatherAPI.fetchDataByCityName("New York City", data => {
             localTz = data.timezone
             writeWeatherInfo(data)
+            document.getElementById("noGeoAccess").animate([
+                { opacity: 100 },
+                { opacity: 0 }
+            ]
+                , {
+                    duration: 7000,
+                    iterations: 1,
+                    easing: 'ease-in'
+                }
+            )
         })
 
 
