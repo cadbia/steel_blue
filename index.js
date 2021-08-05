@@ -6,6 +6,15 @@ const city = document.querySelector(".location-city");
 const temperatureSection = document.querySelector(".temperature");
 const degreeType = document.querySelector(".temperature h1");
 const h2degree = document.querySelector(".temperature h2");
+
+document.getElementById("citySelector").addEventListener("change", getWeatherForCity, false);
+function getWeatherForCity() {
+    var cityCode = document.getElementById("citySelector").value;
+    weatherAPI.fetchDataByCityId(cityCode, data => {
+        writeWeatherInfo(data);
+        window.localData = data;
+    })
+}
 const clock = document.getElementById("clock")
 
 var tz = 0

@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="./style.css" />
   <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -14,6 +15,12 @@
     <h4>Search:&nbsp;</h4>
     <input id="search" type="text" onkeydown="searchBar(event,this)"></input>
   </div>
+  <select id="citySelector" name="cities" id="cities">
+    <option value="3582383">Chicago</option>
+    <option value="4440906">Philadelphia</option>
+    <option value="1705545">Los Angeles</option>
+    <option value="5128581">New York City</option>
+  </select>
   <div id="localButton">
     <input id="local" type="button" value="Local Weather Data" onclick="getLocalData()">
   </div>
