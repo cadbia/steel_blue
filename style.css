@@ -166,7 +166,9 @@ h4 {
     color: rgb(255, 54, 54);
     opacity: 0%;
 }
-
+#windSpeed{
+    cursor: pointer;
+}
 #noGeoAccess {
     margin: auto;
     font-weight: bold;

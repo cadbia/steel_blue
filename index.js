@@ -6,7 +6,8 @@ const city = document.querySelector(".location-city");
 const temperatureSection = document.querySelector(".temperature");
 const degreeType = document.querySelector(".temperature h1");
 const h2degree = document.querySelector(".temperature h2");
-const clock = document.getElementById("clock")
+const clock = document.getElementById("clock");
+const windSpeed = document.getElementById("windSpeed");
 
 var tz = 0
 var localTz = 0
@@ -114,6 +115,17 @@ temperatureSection.addEventListener("click", () => {
     }
 });
 
+windSpeed.addEventListener("click", () => {
+    if(windSpeed.textContent.includes("meters/second")){
+        let speed = numberExtract(windSpeed.textContent);
+        document.getElementById("windSpeed").innerHTML= "<b>Wind Speed: </b>"+(speed * 2.237).toFixed(2) + " miles/hour";
+    }
+    else{
+        let speed = numberExtract(windSpeed.textContent);
+        document.getElementById("windSpeed").innerHTML = "<b>Wind Speed: </b>"+(speed/2.237).toFixed(2) + " meters/second";
+    }
+});
+
 var skycons = new Skycons({ "color": "white" });
 function writeWeatherInfo(data) {
     tz = data.timezone
@@ -136,7 +148,7 @@ function writeWeatherInfo(data) {
     document.getElementById("weatherDescription").innerHTML = `Feels like ${convertTempetureUnit(data.main.feels_like, TEMP.KELVIN, degreeTypeToConvert)}`
     document.getElementById("tempDescription").innerHTML = toTitleCase(data.weather[0].description)
     document.getElementById("humidity").innerHTML = `<b>Humidity:</b> ${data.main.humidity}%`
-    document.getElementById("windSpeed").innerHTML = `<b>Wind Speed:</b> ${data.wind.speed} meters/sec`
+    document.getElementById("windSpeed").innerHTML = `<b>Wind Speed:</b> ${data.wind.speed} meters/second`
     document.getElementById("locationCity").innerHTML = `${data.name},${data.sys.state !== null? " "+data.sys.state+",": ""} ${data.sys.country}`
     sunriseTime = new Date(data.sys.sunrise*1000 + tz * 1000).toLocaleTimeString('en-US',{timeZone:'UTC'});
     sunsetTime = new Date(data.sys.sunset*1000 + tz * 1000).toLocaleTimeString('en-US',{timeZone:'UTC'});
