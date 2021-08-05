@@ -35,7 +35,6 @@ def staticpath(path):
 def api(endpoint):
 
     arg_list = ""
-
     for arg in request.args:
         arg_list += f"{arg}={request.args.get(arg)}&"
 

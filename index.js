@@ -6,7 +6,6 @@ const city = document.querySelector(".location-city");
 const temperatureSection = document.querySelector(".temperature");
 const degreeType = document.querySelector(".temperature h1");
 const h2degree = document.querySelector(".temperature h2");
-
 const clock = document.getElementById("clock")
 
 var tz = 0
@@ -132,7 +131,7 @@ setInterval(() => {
     setClock()
 }, 1000);
 function setClock() {
-    var localTime = new Date().getTime();
-    var newTime = new Date(tz * 1000 + localTime - localTz * 1000);
+    var time = new Date().getTime();
+    var newTime = new Date(tz * 1000 + time + 14400000);
     clock.innerHTML = `${newTime.toLocaleTimeString()}`;
 }

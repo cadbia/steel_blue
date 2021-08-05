@@ -1,5 +1,5 @@
 class WeatherAPI{
-    constructor(api_key){
+    constructor(){
         
     }
 
