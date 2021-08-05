@@ -131,7 +131,7 @@ setInterval(() => {
     setClock()
 }, 1000);
 function setClock() {
-    var time = new Date().getTime();
-    var newTime = new Date(tz * 1000 + time + 14400000);
-    clock.innerHTML = `${newTime.toLocaleTimeString()}`;
+    var currentTime = new Date().getTime();
+    var newTime = new Date(tz * 1000 + currentTime);
+    clock.innerHTML = `${newTime.toLocaleTimeString('en-US',{timeZone:'UTC'})}`;
 }
