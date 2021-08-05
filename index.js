@@ -120,7 +120,7 @@ function writeWeatherInfo(data) {
     }
     else {
         degreeTypeToConvert = TEMP.KELVIN;
-    } 
+    }
     document.getElementById("degree").innerHTML = `${convertTempetureUnit(data.main.temp, TEMP.KELVIN, degreeTypeToConvert)}`
     document.getElementById("weatherDescription").innerHTML = `Feels like ${convertTempetureUnit(data.main.feels_like, TEMP.KELVIN, degreeTypeToConvert)}`
     document.getElementById("tempDescription").innerHTML = toTitleCase(data.weather[0].description)
