@@ -67,7 +67,7 @@ body{
 .title {
     font-size: 70px;
     text-align: center;
-    margin-top: -90px;
+    margin-top: -50px;
 }
 #loadText {
     padding-bottom: 10vh;
@@ -155,7 +155,7 @@ h4 {
     width: 270px;
     font-size: 30px;
     position: absolute;
-    top: -6vh;
+    top: -0.5vh;
     padding-top: 10vh;
 }
 
