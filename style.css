@@ -166,3 +166,11 @@ h4 {
     color: rgb(255, 54, 54);
     opacity: 0%;
 }
+
+#noGeoAccess {
+    margin: auto;
+    font-weight: bold;
+    padding-left: 5px;
+    color: rgb(255, 54, 54);
+    opacity: 0%;
+}
