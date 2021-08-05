@@ -67,6 +67,7 @@ body{
 .title {
     font-size: 70px;
     text-align: center;
+    margin-top: -90px;
 }
 #loadText {
     padding-bottom: 10vh;
@@ -85,7 +86,7 @@ body{
 }
 
 .icon {
-    padding-top: 10vh;
+    padding-top: 15vh;
     padding-bottom: 10vh;
     margin: auto;
     display: flex;
@@ -94,7 +95,7 @@ body{
 .loader {
   margin: auto;
   display: flex;
-  border: 16px solid #ffffff;
+  border: 16px solid #ffffffa2;
   border-top: 16px solid #80bce4;
   border-radius: 50%;
   width: 120px;
@@ -150,16 +151,12 @@ h4 {
 }
 
 #clock {
-    display: flex;
-    align-items: flex-end;
     margin: auto;
     width: 270px;
-    font-size: 50px;
-    text-align: center;
+    font-size: 30px;
     position: absolute;
-    top: -120px;
+    top: -35px;
     padding-top: 10vh;
-    
 }
 
 #invalidCity {

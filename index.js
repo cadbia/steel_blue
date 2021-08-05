@@ -122,7 +122,7 @@ function writeWeatherInfo(data) {
         degreeTypeToConvert = TEMP.KELVIN;
     } 
     document.getElementById("degree").innerHTML = `${convertTempetureUnit(data.main.temp, TEMP.KELVIN, degreeTypeToConvert)}`
-    document.getElementById("weatherDescription").innerHTML = `Feels like ${convertTempetureUnit(data.main.feels_like, TEMP.KELVIN, TEMP.FAHRENHEIT)}`
+    document.getElementById("weatherDescription").innerHTML = `Feels like ${convertTempetureUnit(data.main.feels_like, TEMP.KELVIN, degreeTypeToConvert)}`
     document.getElementById("tempDescription").innerHTML = toTitleCase(data.weather[0].description)
 
     document.getElementById("locationCity").innerHTML = `${data.name},${data.sys.state !== null? " "+data.sys.state+",": ""} ${data.sys.country}`
