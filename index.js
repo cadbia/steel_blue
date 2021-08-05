@@ -136,7 +136,7 @@ function writeWeatherInfo(data) {
     document.getElementById("weatherDescription").innerHTML = `Feels like ${convertTempetureUnit(data.main.feels_like, TEMP.KELVIN, degreeTypeToConvert)}`
     document.getElementById("tempDescription").innerHTML = toTitleCase(data.weather[0].description)
     document.getElementById("humidity").innerHTML = `<b>Humidity:</b> ${data.main.humidity}%`
-    document.getElementById("windSpeed").innerHTML = `<b>Wind speed:</b> ${data.wind.speed} meters/sec`
+    document.getElementById("windSpeed").innerHTML = `<b>Wind Speed:</b> ${data.wind.speed} meters/sec`
     document.getElementById("locationCity").innerHTML = `${data.name},${data.sys.state !== null? " "+data.sys.state+",": ""} ${data.sys.country}`
     sunriseTime = new Date(data.sys.sunrise*1000 + tz * 1000).toLocaleTimeString('en-US',{timeZone:'UTC'});
     sunsetTime = new Date(data.sys.sunset*1000 + tz * 1000).toLocaleTimeString('en-US',{timeZone:'UTC'});
