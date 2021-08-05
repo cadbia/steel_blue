@@ -4,6 +4,7 @@ import waitress
 from flask import render_template, send_from_directory, request, make_response
 
 import json
+from functools import lru_cache
 
 API_KEY = "939aef0ebf0cecd4d85905f7f983915d"
 
@@ -30,6 +31,15 @@ def root_path(path):
 def staticpath(path):
     return send_from_directory("src",path)
 
+@lru_cache(maxsize=500)
+def get_from_api(endpoint,arg_list):
+    req = requests.get(f"https://api.openweathermap.org/data/2.5/{endpoint}?{arg_list}appid={API_KEY}")
+    if req.status_code == 200:
+        return req.json()
+    else:
+        return {
+            "cod" : req.status_code
+        }
 
 @app.route("/api/<path:endpoint>")
 def api(endpoint):
@@ -38,17 +48,14 @@ def api(endpoint):
     for arg in request.args:
         arg_list += f"{arg}={request.args.get(arg)}&"
 
-    req = requests.get(f"https://api.openweathermap.org/data/2.5/{endpoint}?{arg_list}appid={API_KEY}")
-    if req.status_code == 200:
-        req = req.json()
+    req = get_from_api(endpoint,arg_list)
+    
+    if req["cod"] == 200:
         city = cities[req["id"]]
         req["sys"]["state"] = city["state"] or None
-
         resp = make_response(req)
     else:
-        resp = make_response({
-            "cod" : req.status_code
-        })
+        resp = make_response(req)
 
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp

@@ -131,11 +131,18 @@ function writeWeatherInfo(data) {
     else {
         degreeTypeToConvert = TEMP.KELVIN;
     }
+
     document.getElementById("degree").innerHTML = `${convertTempetureUnit(data.main.temp, TEMP.KELVIN, degreeTypeToConvert)}`
     document.getElementById("weatherDescription").innerHTML = `Feels like ${convertTempetureUnit(data.main.feels_like, TEMP.KELVIN, degreeTypeToConvert)}`
     document.getElementById("tempDescription").innerHTML = toTitleCase(data.weather[0].description)
 
     document.getElementById("locationCity").innerHTML = `${data.name},${data.sys.state !== null? " "+data.sys.state+",": ""} ${data.sys.country}`
+
+    sunriseTime = new Date(data.sys.sunrise*1000 + tz * 1000).toLocaleTimeString('en-US',{timeZone:'UTC'});
+    sunsetTime = new Date(data.sys.sunset*1000 + tz * 1000).toLocaleTimeString('en-US',{timeZone:'UTC'});
+    console.log(sunriseTime)
+    console.log(sunsetTime)
+
     var skyconElement = document.getElementsByClassName("icon")[0]
     var weatherIconName = WEATHER_TYPES[data.weather[0].main]
     skycons.set(skycon, weatherIconName)
