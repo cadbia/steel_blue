@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<button onclick="copy()">Copy text</button>
+<script>
+function copy(){
+    document.getElementById("input").select()
+    document.execCommand("copy");
+}
+</script>
+<textarea id="input" style="opacity:0">https://steelblueweatherapp.duckdns.org:4682/</textarea>
