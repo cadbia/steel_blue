@@ -95,7 +95,7 @@ body{
 .loader {
   margin: auto;
   display: flex;
-  border: 16px solid #ffffff;
+  border: 16px solid #ffffffa2;
   border-top: 16px solid #80bce4;
   border-radius: 50%;
   width: 120px;
