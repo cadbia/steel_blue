@@ -92,9 +92,11 @@ function numberExtract(str) {
     }
 }
 
+var currentDegreeType = "°F"
 temperatureSection.addEventListener("click", () => {
     if (degreeType.textContent == "°F") {
         degreeType.textContent = "°C";
+        currentDegreeType = "°C";
         h2degree.textContent = ((h2degree.textContent - 32) * (5 / 9)).toFixed(2);
         let feelNum = numberExtract(feelsLike.textContent);
 
@@ -102,6 +104,7 @@ temperatureSection.addEventListener("click", () => {
     }
     else {
         degreeType.textContent = "°F"
+        currentDegreeType = "°F";
         h2degree.textContent = ((h2degree.textContent * (9 / 5)) + 32).toFixed(2);
         let feelNum = numberExtract(feelsLike.textContent);
         feelsLike.textContent = "Feels like " + ((feelNum * (9 / 5)) + 32).toFixed(2);
@@ -112,7 +115,17 @@ var skycons = new Skycons({ "color": "white" });
 function writeWeatherInfo(data) {
     node = document.getElementById("layer1").style.visibility = 'hidden';
     node = document.getElementById("layer2").style.visibility = 'visible';
-    document.getElementById("degree").innerHTML = `${convertTempetureUnit(data.main.temp, TEMP.KELVIN, TEMP.FAHRENHEIT)}`
+    var degreeTypeToConvert
+    if (currentDegreeType[1] == "F") {
+        degreeTypeToConvert = TEMP.FAHRENHEIT;
+    }
+    else if (currentDegreeType[1] == "C") {
+        degreeTypeToConvert = TEMP.CELSIUS;
+    }
+    else {
+        degreeTypeToConvert = TEMP.KELVIN;
+    } 
+    document.getElementById("degree").innerHTML = `${convertTempetureUnit(data.main.temp, TEMP.KELVIN, degreeTypeToConvert)}`
     document.getElementById("weatherDescription").innerHTML = `Feels like ${convertTempetureUnit(data.main.feels_like, TEMP.KELVIN, TEMP.FAHRENHEIT)}`
     document.getElementById("tempDescription").innerHTML = toTitleCase(data.weather[0].description)
     document.getElementById("locationCity").innerHTML = `${data.name}, ${data.sys.country}`
