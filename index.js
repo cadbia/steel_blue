@@ -134,7 +134,8 @@ function writeWeatherInfo(data) {
     document.getElementById("degree").innerHTML = `${convertTempetureUnit(data.main.temp, TEMP.KELVIN, degreeTypeToConvert)}`
     document.getElementById("weatherDescription").innerHTML = `Feels like ${convertTempetureUnit(data.main.feels_like, TEMP.KELVIN, degreeTypeToConvert)}`
     document.getElementById("tempDescription").innerHTML = toTitleCase(data.weather[0].description)
-
+    document.getElementById("humidity").innerHTML = `Humidity: ${data.main.humidity}%`
+    document.getElementById("windSpeed").innerHTML = `Wind speed: ${data.wind.speed} meters/sec`
     document.getElementById("locationCity").innerHTML = `${data.name},${data.sys.state !== null? " "+data.sys.state+",": ""} ${data.sys.country}`
     var skyconElement = document.getElementsByClassName("icon")[0]
     var weatherIconName = WEATHER_TYPES[data.weather[0].main]
