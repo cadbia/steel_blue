@@ -36,6 +36,15 @@ function searchBar(event,searchBar){
         let text = searchBar.value
         weatherAPI.fetchDataByCityName(text, data => {
             if (data.cod == 404){
+                document.getElementById("invalidCity").animate([
+                    { opacity: 100 },
+                    { opacity: 0 }
+                ]
+                , {duration: 1700,
+                iterations: 1,
+                easing: 'ease-in'} 
+                )
+
                 throw "City not found"
             }
             tz = data.timezone

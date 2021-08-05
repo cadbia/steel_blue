@@ -158,3 +158,11 @@ h4 {
     top: -120px;
     
 }
+
+#invalidCity {
+    margin: auto;
+    font-weight: bold;
+    padding-left: 5px;
+    color: red;
+    opacity: 0%;
+}
