@@ -4,7 +4,7 @@
 
 ## How to host on Heroku and Cloudflare
 Making the server run on Heroku. Heroku is free but requires credit card verification.<br>
-https://www.youtube.com/watch?v=Li0Abz-KT78
+https://www.youtube.com/watch?v=Li0Abz-KT78<br>
 Clouldflare is the easiest way to get an SSL certificate. You need to buy a domain for ~$12 though. I don't know a guide to do this but there should be a lot online.
 
 ## How to run the server yourself
